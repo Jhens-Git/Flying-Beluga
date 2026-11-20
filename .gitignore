@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# MATLAB & Simulink (ready for when you add them later)
+*.autosave
+*.asv
+*.slxc
+slprj/
+codegen/
+
+# KiCad (ready for when you add them later)
+*-backups/
+*.lck
+*.bak
+fp-info-cache
+
+# OS / Editors
+.DS_Store
+.vscode/
