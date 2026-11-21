@@ -7,3 +7,5 @@ python3 s04_mass_cg.py             # CG / inertias        -> results/mass_props.
 python3 s02_structure.py           # spar sizing (needs mass_props for battery clearance)
 python3 s05_avl.py                 # AVL trim + fin/elevon sweep  (use --dry to just write the .avl)
 python3 s06_state_space.py         # A,B,C,D -> results/state_space.{json,mat,m}
+python3 s07_ribs.py                # rib spacing / thickness / spar-hole sizing
+python3 s08_planform_drawing.py    # Plot all outputs 

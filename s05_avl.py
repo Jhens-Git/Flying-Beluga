@@ -69,6 +69,8 @@ def parse(path):
     if not os.path.exists(path):
         return d
     for ln in open(path, errors="ignore"):
+        if "Clb Cnr" in ln:
+            continue
         for k, v in re.findall(r"([A-Za-z][A-Za-z0-9']*)\s*=\s*(" + NUM + ")", ln):
             try:
                 d[k] = float(v.replace("D", "E").replace("d", "e"))
@@ -144,7 +146,7 @@ def main():
     print(f"   => AVL says washout {tw_avl:+.2f} deg gives zero elevon at cruise (VLM screen said {tw0:+.2f})")
     # ---- stage C: fin x elevon sweep
     print("\nStage C: fin height x elevon chord sweep")
-    print("  fin[mm] elev[%]   Cnb    Clb   spiral  Cm_de   de_cruise  de_slow(CL%.2f)  SM_avl" % CL_slow)
+    print("  fin[mm] elev[%%]   Cnb    Clb   spiral  Cm_de   de_cruise  de_slow(CL%.2f)  SM_avl" % CL_slow)
     rows = []
     for h in C.FIN_HEIGHTS:
         for ef in C.ELEVON_CHORD_FRACS:
@@ -174,7 +176,6 @@ def main():
     json.dump(res, open(os.path.join(C.RES, "avl_results.json"), "w"), indent=1)
     D["washout_deg_avl"] = tw_avl; D["fin_final"] = best["fin"]; D["elevon_final"] = best["el"]
     json.dump(D, open(os.path.join(C.RES, "design.json"), "w"), indent=1)
-    shutil.copy(os.path.join(AVLDIR, "final_st.txt"), os.path.join(AVLDIR, "final_st.txt"))
     print("saved results/avl_results.json -> run s06_state_space.py next")
 
 

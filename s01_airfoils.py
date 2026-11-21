@@ -144,6 +144,7 @@ def job(args):
         pol = run_xfoil(path, Re, nc)
         m = metrics(pol) if pol is not None else None
     except Exception as e:
+        print(f"[{name} Re={Re}] {type(e).__name__}: {e}", flush=True)
         m = None
     return name, Re, nc, m
 
@@ -161,6 +162,11 @@ def score(m100_5, m60_5, _unused=None):
 
 
 def main():
+    if XFOIL is None:
+        sys.exit("xfoil not found. Run: sudo apt install xfoil xvfb xfonts-base xfonts-75dpi")
+    if XVFB is None:
+        print("WARNING: xvfb-run not found; xfoil will likely crash. sudo apt install xvfb xfonts-base xfonts-75dpi")
+
     print_re_band()
     cands = build_candidates(download="--no-download" not in sys.argv)
     nw = max(1, (os.cpu_count() or 2) - 1)

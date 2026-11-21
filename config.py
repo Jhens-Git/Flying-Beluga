@@ -33,11 +33,11 @@ C_ROOT_MAX = 0.32             # m
 
 # ---------------- carbon spar (4x4 mm pultruded) ----------------
 ROD_B = 4.0e-3                # m
-ROD_LEN = 0.400               # m
+ROD_LEN = 0.420               # m
 N_RODS = 2
 E_CF = 120e9                  # Pa  conservative for pultruded square rod (spec sheets: 100-135 GPa)
 G_CF = 4.5e9                  # Pa  shear modulus (UD CFRP is poor in torsion)
-SIGMA_ALLOW = 600e6           # Pa  conservative flexural strength, pultruded rod (check your vendor!)
+SIGMA_ALLOW = 600e6           # Pa  conservative flexural strength, pultruded rod (check vendor!)
 TAU_ALLOW = 40e6              # Pa  interlaminar/torsional shear allowable, pultruded CF (conservative)
 RHO_CF = 1600.0               # kg/m^3
 
@@ -49,16 +49,16 @@ BATT_CENTER_MAX_FRAC = 0.50   # of root chord
 # ---------------- mass budget (grams) : ESTIMATE = replace with scale readings ----------------
 # name: (mass_g, x as fraction of root chord (None = solved), y_m, z_m, note)
 MASS_ITEMS = {
-    "camera":        (8.0,   -0.25, 0.0,  0.0, "ESTIMATE nano FPV cam in nose pod"),
+    "camera":        (10.0,   -0.25, 0.0,  0.0, "ESTIMATE nano FPV cam in nose pod"),
     "battery":       (63.5,  None,  0.0,  0.0, "BOM: 0.14 lb  -> position is SOLVED"),
-    "stm32_board":   (15.0,   0.40, 0.0,  0.0, "ESTIMATE dev board"),
-    "bmi270":        (3.0,    0.40, 0.0,  0.0, "ESTIMATE"),
-    "gps_m100":      (10.0,   0.55, 0.0,  0.0, "ESTIMATE"),
-    "elrs_rx":       (2.0,    0.35, 0.0,  0.0, "ESTIMATE"),
-    "buck_5v":       (6.0,    0.45, 0.0,  0.0, "ESTIMATE"),
-    "pdb_wiring":    (12.0,   0.50, 0.0,  0.0, "ESTIMATE PDB + wire harness"),
-    "esc":           (12.0,   0.70, 0.0,  0.0, "ESTIMATE 15-20 A"),
-    "motor_prop":    (32.0,   1.03, 0.0,  0.01,"ESTIMATE 1806 motor + 5in prop + mount, behind root TE"),
+    "stm32_board":   (21.0,   0.40, 0.0,  0.0, "ESTIMATE dev board"),
+    "bmi270":        (2.0,    0.40, 0.0,  0.0, "ESTIMATE"),
+    "gps_m100":      (5.0,   0.55, 0.0,  0.0, "ESTIMATE"),
+    "elrs_rx":       (3.0,    0.35, 0.0,  0.0, "ESTIMATE"),
+    "buck_5v":       (45.0,    0.45, 0.0,  0.0, "ESTIMATE"),
+    "pdb_wiring":    (20.0,   0.50, 0.0,  0.0, "ESTIMATE PDB + wire harness"),
+    "esc":           (21.0,   0.70, 0.0,  0.0, "ESTIMATE 15-20 A"),
+    "motor_prop":    (25.0,   1.03, 0.0,  0.01,"ESTIMATE 1806 motor + 5in prop + mount, behind root TE"),
     "nose_pod_pla":  (20.0,  -0.10, 0.0,  0.0, "ESTIMATE printed nose pod + skid"),
     "fins":          (6.0,    None, None, 0.03,"ESTIMATE two printed fins, placed at wing tips"),
 }
